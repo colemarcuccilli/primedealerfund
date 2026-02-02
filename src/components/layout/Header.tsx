@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,8 +17,13 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // On non-homepage, nav text is always dark
+  const darkNav = !isHome || scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -43,7 +49,7 @@ export default function Header() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
+          darkNav
             ? "glass py-3"
             : "bg-transparent py-5"
         }`}
@@ -66,7 +72,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm hover:text-gold-400 transition-colors duration-300 tracking-wide ${
-                  scrolled ? "text-navy-300" : "text-white/80"
+                  darkNav ? "text-navy-300" : "text-white/80"
                 }`}
               >
                 {link.label}
@@ -78,7 +84,7 @@ export default function Header() {
             <Link
               href="/calculator"
               className={`text-sm hover:text-gold-300 transition-colors duration-300 ${
-                scrolled ? "text-gold-400" : "text-gold-300"
+                darkNav ? "text-gold-400" : "text-gold-300"
               }`}
             >
               Calculator
@@ -99,15 +105,15 @@ export default function Header() {
             <div className="flex flex-col gap-1.5">
               <motion.span
                 animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className={`block w-6 h-0.5 origin-center ${scrolled ? "bg-cream-50" : "bg-white"}`}
+                className={`block w-6 h-0.5 origin-center ${darkNav ? "bg-cream-50" : "bg-white"}`}
               />
               <motion.span
                 animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                className={`block w-6 h-0.5 ${scrolled ? "bg-cream-50" : "bg-white"}`}
+                className={`block w-6 h-0.5 ${darkNav ? "bg-cream-50" : "bg-white"}`}
               />
               <motion.span
                 animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className={`block w-6 h-0.5 origin-center ${scrolled ? "bg-cream-50" : "bg-white"}`}
+                className={`block w-6 h-0.5 origin-center ${darkNav ? "bg-cream-50" : "bg-white"}`}
               />
             </div>
           </button>

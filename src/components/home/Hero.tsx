@@ -51,7 +51,7 @@ export default function Hero() {
               PRIME
             </motion.span>
 
-            {/* DEALER — filled gold, goes outline on hover */}
+            {/* DEALER FUND — gold with shimmer */}
             <motion.span
               initial={{ y: 120, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -60,23 +60,10 @@ export default function Hero() {
                 delay: 0.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="hero-gold inline-block cursor-default"
+              className="hero-gold-wrap cursor-default"
             >
-              DEALER
-            </motion.span>
-
-            {/* FUND — filled gold, goes outline on hover */}
-            <motion.span
-              initial={{ y: 120, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="hero-gold inline-block cursor-default"
-            >
-              FUND
+              <span>DEALER</span>
+              <span>FUND</span>
             </motion.span>
           </div>
         </div>

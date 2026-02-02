@@ -7,6 +7,21 @@ import GoldDivider from "@/components/ui/GoldDivider";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+const podcasts = [
+  {
+    title: "Podcast Episode 1",
+    embedId: "_S9KY1dk-_4",
+  },
+  {
+    title: "Podcast Episode 2",
+    embedId: "IdQtd72ipzs",
+  },
+  {
+    title: "Podcast Episode 3",
+    embedId: "IocrK4o65kI",
+  },
+];
+
 const videos = [
   {
     title: "Prime Dealer Equity Fund Thesis",
@@ -261,6 +276,45 @@ export default function MediaPage() {
               </motion.button>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Podcasts */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-10">
+            <span className="text-gold-400 font-mono text-xs tracking-[0.15em] uppercase">
+              Podcasts
+            </span>
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-cream-50 mt-2 mb-2">
+              Listen In
+            </h3>
+            <p className="text-navy-400 max-w-xl">
+              Conversations on the automotive industry, dealership investing, and fund strategy.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {podcasts.map((p) => (
+              <div key={p.embedId} className="rounded-2xl overflow-hidden bg-navy-900/30 border border-navy-800/30">
+                <div className="relative w-full aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${p.embedId}?rel=0`}
+                    title={p.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+                <div className="p-4">
+                  <h4 className="font-display text-sm font-semibold text-cream-50">
+                    {p.title}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </PageLayout>
