@@ -1,0 +1,85 @@
+import type { Metadata } from "next";
+import { Bebas_Neue, Archivo, Inter, JetBrains_Mono, Zalando_Sans_SemiExpanded } from "next/font/google";
+import "./globals.css";
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
+  display: "swap",
+});
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const zalandoSansSemiExpanded = Zalando_Sans_SemiExpanded({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-zalando",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "Prime Dealer Fund | Automotive Dealership Investment",
+    template: "%s | Prime Dealer Fund",
+  },
+  description:
+    "Invest in the $1.2 trillion automotive retail industry. Prime Dealer Fund acquires, optimizes, and scales franchise dealerships across America.",
+  keywords: [
+    "automotive investment",
+    "dealership fund",
+    "prime dealer",
+    "franchise dealership",
+    "alternative investment",
+    "Coleman Prime",
+  ],
+  openGraph: {
+    title: "Prime Dealer Fund",
+    description:
+      "Institutional-quality automotive dealership investment. Recession-resistant. Asset-backed. Revenue-proven.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Prime Dealer Fund",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prime Dealer Fund",
+    description:
+      "Institutional-quality automotive dealership investment. Recession-resistant. Asset-backed. Revenue-proven.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${bebasNeue.variable} ${archivo.variable} ${inter.variable} ${zalandoSansSemiExpanded.variable} ${jetbrainsMono.variable}`}>
+      <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
+        {children}
+      </body>
+    </html>
+  );
+}
