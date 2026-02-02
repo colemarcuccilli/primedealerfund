@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 :root {
+  /* Zalando font loaded via Google Fonts link */
+  --font-zalando: "Zalando Sans SemiExpanded";
+
   /* Brand Colors — Light gold accent */
   --gold-50: #fefdf5;
   --gold-100: #fdf9e4;

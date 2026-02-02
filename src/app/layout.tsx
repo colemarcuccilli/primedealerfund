@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Archivo, Inter, JetBrains_Mono, Zalando_Sans_SemiExpanded } from "next/font/google";
+import { Bebas_Neue, Archivo, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -19,13 +19,6 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["700", "800", "900"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const zalandoSansSemiExpanded = Zalando_Sans_SemiExpanded({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-zalando",
   display: "swap",
 });
 
@@ -76,7 +69,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${archivo.variable} ${inter.variable} ${zalandoSansSemiExpanded.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${bebasNeue.variable} ${archivo.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         {children}
       </body>
